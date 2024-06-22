@@ -2,9 +2,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
     const storage = size;
     let map = new Array(storage).fill(null).map(() => []);
     
-
-
-    // hash(key) takes a key and produces a hash code with it
     function hash(key) {
         let hashCode = 0;
         const primeNumber = 31;
@@ -15,8 +12,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         return hashCode % storage;
     }
 
-
-    //set(key,value) takes two arguments, the first is a key and the second is a value that is assigned to this key
     function set(key, value) {
         const index = hash(key);
 
@@ -38,7 +33,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         }
     }
 
-    //get(key) takes one arguments as a key and returns the value that is assigned to this key
     function get(key) {
         const index = hash(key);
 
@@ -54,7 +48,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         }
     }
 
-    //has(key) takes a key as an argument and returns true or false based on whether or not the key is in the hash map
     function has(key) {
         const index = hash(key);
 
@@ -71,8 +64,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         }
     }
 
-
-    //remove(key) takes a key as an arguments if the given key is in the hash map, it should remove the entry with that key and return true
     function remove(key) {
         const index = hash(key);
 
@@ -89,7 +80,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         }
     }
 
-    //length() returns the number of stored keys in the hash map
     function length() {
         let count = 0;
         for (let i = 0; i < map.length; i++) {
@@ -100,16 +90,12 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         return count;
     }
 
-
-    //clear() removes all entries in the hash map
     function clear() {
         for (let i = 0; i < map.length; i++) {
             map[i] = null;
         }
     }
 
-
-    //keys() returns an array containing all the keys inside the hash map
     function keys() {
         let keys = [];
         for (let i = 0; i < map.length; i++) {
@@ -122,7 +108,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         return keys;
     }
 
-    //values() returns an array containing all the values
     function values() {
         let values = [];
         for (let i = 0; i < map.length; i++) {
@@ -135,8 +120,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         return values;
     }
 
-
-    //entries() returns an array that contains each key, value pair.
     function entries() {
         let entries = [];
         for (let i = 0; i < map.length; i++) {
@@ -149,7 +132,6 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         return entries;
     }
 
-
     return {
         set,
         get,
@@ -161,15 +143,12 @@ export default function createHashMap(size = 8, loadFactor = 0.75) {
         values,
         entries,
     }
-
-
 }
 
 
 let hm = new createHashMap();
 hm.set('bea', 'person');
 hm.set('ricky', 'cat');
-
 
 console.log(hm.get('ricky'))
 console.log(hm.get('bea'));
